@@ -43,3 +43,6 @@ contracts/broadcast
 
 # Local Netlify folder
 .netlify
+
+# video renders & raw takes
+/videos/

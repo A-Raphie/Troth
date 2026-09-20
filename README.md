@@ -1,26 +1,34 @@
 # Troth
 
-> **Trustless, multi-milestone escrow on the Arc Layer 1 blockchain.**  
-> Sub-second settlement. Native USDC gas. Zero platform rake.
+Multi-milestone smart contract escrow on Arc Layer 1 with native USDC gas and sub-second settlement.
+
+[Live App](https://trytroth.netlify.app) · [Demo Video](https://trytroth.netlify.app/demo-video.mp4) · [Arc Mainnet Contract](https://arc.etherscan.io/address/0xF7A20db6E51171263856f282ed188f795206d649) · [GitHub Repo](https://github.com/A-Raphie/troth) · [How It Works](#the-problem--the-arc-thesis)
+
+Freelancers lose 10%–20% of their earnings to platform rakes and risk client ghosting; Troth locks milestone USDC in Solidity escrows on Arc Layer 1 and settles payouts in 350 milliseconds with zero platform fees.
 
 [![Live App](https://img.shields.io/badge/Live%20App-trytroth.netlify.app-004ef5?style=flat-square)](https://trytroth.netlify.app)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-A--Raphie%2Ftroth-181717?style=flat-square&logo=github)](https://github.com/A-Raphie/troth)
-[![Network](https://img.shields.io/badge/Arc%20L1-5042-emerald?style=flat-square)](https://rpc.mainnet.arc.io)
+[![Demo Video](https://img.shields.io/badge/Demo%20Video-Streamable%20MP4-red?style=flat-square)](https://trytroth.netlify.app/demo-video.mp4)
+[![Arc L1](https://img.shields.io/badge/Arc%20L1-Chain%205042-emerald?style=flat-square)](https://rpc.mainnet.arc.io)
 [![Foundry Tests](https://img.shields.io/badge/Foundry%20Tests-11%2F11%20Passing-success?style=flat-square)](https://github.com/A-Raphie/troth)
 
 Built for the **Arc Microgrants (Circle / DoraHacks)** — [dorahacks.io/hackathon/arc-microgrants](https://dorahacks.io/hackathon/arc-microgrants).
 
+![Troth Escrow Interface](public/demo-preview.png)
+
 ---
 
-## Live Deployments & Endpoints
+## Proof & Live Endpoints
 
-| Resource | URL |
-| :--- | :--- |
-| **Live Web App** | [https://trytroth.netlify.app](https://trytroth.netlify.app) |
-| **Arc Mainnet Contract** | [`0xF7A20db6E51171263856f282ed188f795206d649`](https://arc.etherscan.io/address/0xF7A20db6E51171263856f282ed188f795206d649) |
-| **GitHub Repository** | [https://github.com/A-Raphie/troth](https://github.com/A-Raphie/troth) |
-| **Arc Mainnet RPC** | `https://rpc.mainnet.arc.io` (Chain ID `5042`) |
-| **Arc Testnet RPC** | `https://rpc.testnet.arc.io` (Chain ID `5042002`) |
+- **Live Production App:** [https://trytroth.netlify.app](https://trytroth.netlify.app)
+- **Demo Video (Streamable MP4):** [https://trytroth.netlify.app/demo-video.mp4](https://trytroth.netlify.app/demo-video.mp4)
+- **Arc Mainnet Contract:** [`0xF7A20db6E51171263856f282ed188f795206d649`](https://arc.etherscan.io/address/0xF7A20db6E51171263856f282ed188f795206d649) (Chain ID `5042`)
+- **Public Verification (No Wallet Required):** [https://trytroth.netlify.app/agreement/104](https://trytroth.netlify.app/agreement/104)
+- **Deployment Transaction:** [`0x9c92d4fd...cec4f`](https://arc.etherscan.io/tx/0x9c92d4fd7df78c39d23713ac179841984a49f2aedb6efe3e1175d896ebdcec4f)
+- **Foundry Unit Tests:** 11/11 passing (`contracts/test/TrothEscrow.t.sol`)
+- **Settlement Latency:** ~350ms deterministic finality via Arc Malachite BFT consensus engine
+- **Platform Fee:** 0% platform rake vs 10%–20% on Upwork and Fiverr
+- **Arc Mainnet RPC:** `https://rpc.mainnet.arc.io` (Chain ID `5042`)
+- **Arc Testnet RPC:** `https://rpc.testnet.arc.io` (Chain ID `5042002`)
 
 ---
 

@@ -12,8 +12,10 @@
 | Surface | Link |
 | :--- | :--- |
 | **Live Web App** | [https://trytroth.netlify.app](https://trytroth.netlify.app) |
+| **Demo Video (Streamable MP4)** | [https://trytroth.netlify.app/demo-video.mp4](https://trytroth.netlify.app/demo-video.mp4) |
 | **Public GitHub Repo** | [https://github.com/A-Raphie/troth](https://github.com/A-Raphie/troth) |
 | **Arc Mainnet Contract** | [`0xF7A20db6E51171263856f282ed188f795206d649`](https://arc.etherscan.io/address/0xF7A20db6E51171263856f282ed188f795206d649) |
+| **Public Escrow Verification** | [https://trytroth.netlify.app/agreement/104](https://trytroth.netlify.app/agreement/104) |
 | **Deployment Tx** | [`0x9c92d4fd...cec4f`](https://arc.etherscan.io/tx/0x9c92d4fd7df78c39d23713ac179841984a49f2aedb6efe3e1175d896ebdcec4f) |
 | **Foundry Test Suite** | 11/11 Tests Passing (`contracts/test/TrothEscrow.t.sol`) |
 | **Arc Mainnet RPC** | `https://rpc.mainnet.arc.io` (Chain ID `5042`) |
@@ -24,10 +26,10 @@
 ## 1. Project Description & One-Liner
 
 **One-Liner:**  
-Troth locks client funds in milestone smart contracts on Arc L1, releasing USDC payouts instantly upon deliverable approval with sub-cent gas and zero platform fees.
+Multi-milestone smart contract escrow on Arc Layer 1 with native USDC gas and sub-second settlement.
 
 **Short Description:**  
-Troth is a non-custodial milestone escrow application designed for the gig economy, remote contractors, and digital freelancers. By leveraging Arc L1's native USDC gas model and ~350ms BFT finality, Troth makes $5–$25 micro-milestone payments economically feasible on-chain, replacing legacy freelance platform take-rates (10%–20%) with trustless smart contract guarantees.
+Troth is a trustless, multi-milestone escrow application purpose-built for the gig economy, remote contractors, and autonomous digital agents. By leveraging Arc Layer 1's native USDC gas model and ~350ms BFT finality, Troth eliminates predatory 10%–20% freelance platform rakes, prevents counterparty ghosting via dual-timer smart contracts, and settles milestone payouts deterministically in the blink of an eye.
 
 ---
 
@@ -84,9 +86,12 @@ Arc provides native USDC gas (~$0.0001 per transaction) and instant deterministi
 
 ## 6. Accomplishments & Measurable Traction
 
-- **11/11 Foundry Unit Tests Passing (100% Coverage):** Verified contract mechanics against creation, authorization, timeout expiration, deadline refund reclaims, and unauthorized access attempts.
-- **Live Production Deployment:** Deployed and verified on Netlify at [https://trytroth.netlify.app](https://trytroth.netlify.app) (HTTP 200 on all static routes).
-- **Zero-Rake Micro-Escrow Viability:** Demonstrated functional escrow creation with realistic $5–$10 milestone payments where gas costs represent less than 0.01% of the transfer amount.
+- **Arc Mainnet Contract Verification:** Deployed and verified on Arc Layer 1 (Chain ID `5042`) at [`0xF7A20db6E51171263856f282ed188f795206d649`](https://arc.etherscan.io/address/0xF7A20db6E51171263856f282ed188f795206d649).
+- **Sub-Second Settlement Finality:** ~350ms deterministic milestone release via Arc's Malachite BFT consensus engine.
+- **11/11 Foundry Unit Tests Passing (100% Coverage):** Verified contract mechanics against creation, authorization, timeout auto-release, deadline refund clawbacks, revision requests, and unauthorized access attempts.
+- **Live Production Deployment:** Live on Netlify at [https://trytroth.netlify.app](https://trytroth.netlify.app) (HTTP 200 across all routes).
+- **100% Feature Coverage Video Walkthrough:** 114s comprehensive demo video covering all 9 core features ([streamable MP4](https://trytroth.netlify.app/demo-video.mp4)).
+- **Zero-Rake Micro-Escrow Viability:** Demonstrated functional escrow creation with realistic $5–$25 milestone payments where gas costs represent less than 0.01% of the transfer amount, saving contractors 10%–20% compared to Upwork/Fiverr.
 - **Full Open-Source Release:** Complete documentation, Foundry setup, and frontend codebase published under MIT License on GitHub at [https://github.com/A-Raphie/troth](https://github.com/A-Raphie/troth).
 
 ---
