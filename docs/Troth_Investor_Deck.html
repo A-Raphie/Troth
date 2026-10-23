@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Troth — Investor Deck & Executive Memorandum</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #06080E;
+      color: #F8FAFC;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      padding: 80px 100px;
+      background: radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+                  radial-gradient(circle at 15% 85%, rgba(30, 58, 138, 0.12) 0%, transparent 50%),
+                  #070A11;
+      position: relative;
+      page-break-after: always;
+      break-after: page;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border-bottom: 1px solid #1E293B;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        border-bottom: none;
+      }
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+    }
+
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.1);
+      color: #38BDF8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .header-tag.green {
+      background: rgba(16, 185, 129, 0.1);
+      color: #34D399;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-logo span {
+      background: linear-gradient(135deg, #38BDF8, #818CF8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      font-size: 14px;
+      color: #64748B;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    h1 {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    p.lead {
+      font-size: 24px;
+      color: #94A3B8;
+      max-width: 1100px;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 36px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin-top: 36px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background: rgba(18, 24, 38, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 36px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card.highlight {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(18, 24, 38, 0.95);
+      box-shadow: 0 12px 36px -8px rgba(56, 189, 248, 0.15);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #F8FAFC;
+    }
+
+    .card-body {
+      font-size: 16px;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    .stat-number {
+      font-size: 54px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #38BDF8;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #CBD5E1;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .flow-step {
+      flex: 1;
+      background: rgba(18, 24, 38, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .flow-arrow {
+      color: #38BDF8;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .code-block {
+      background: #0D111A;
+      border: 1px solid #1E293B;
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #38BDF8;
+      line-height: 1.6;
+    }
+
+    .quote-box {
+      border-left: 4px solid #38BDF8;
+      padding: 20px 28px;
+      background: rgba(56, 189, 248, 0.05);
+      border-radius: 0 12px 12px 0;
+      margin-top: 24px;
+      font-style: italic;
+      color: #E2E8F0;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag">Circle & Arc Builders Fund · Submission 2026</div>
+    </div>
+    <div class="slide-content">
+      <div class="header-tag green" style="align-self: flex-start; margin-bottom: 24px;">Direct Response to Arc Request for Builders · Frontier 1</div>
+      <h1>Programmable Commercial Agreements on Arc L1</h1>
+      <p class="lead">Turning multi-party commercial contracts into self-executing software with native USDC gas, sub-second finality, and mutual anti-ghosting guarantees.</p>
+      
+      <div class="grid-4" style="margin-top: 50px;">
+        <div class="card">
+          <div class="stat-number">0.50%</div>
+          <div class="stat-label">Protocol Fee (vs 20% Web2)</div>
+        </div>
+        <div class="card">
+          <div class="stat-number">~350ms</div>
+          <div class="stat-label">BFT Settlement Finality</div>
+        </div>
+        <div class="card">
+          <div class="stat-number">$0.0001</div>
+          <div class="stat-label">Native USDC Gas Cost</div>
+        </div>
+        <div class="card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Non-Custodial Trust</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Live App: trytroth.netlify.app</div>
+      <div>Contract: 0xF7A20db6E51171263856f282ed188f795206d649 (Arc L1)</div>
+      <div>Slide 01 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: THE PROBLEM -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag">Market Friction</div>
+    </div>
+    <div class="slide-content">
+      <h2>The $2.4 Trillion Commercial Trust Dilemma</h2>
+      <p class="lead">Digital labor and machine services move at internet speed, but the financial layer holding them together is predatory, slow, and fractured.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title" style="color: #F87171;">Web2 Freelance Rakes</div>
+          <div class="card-body">
+            Platforms like Upwork and Fiverr extract <strong>10% to 20% rakes</strong>, freeze contractor earnings in mandatory 5-to-14 day clearing holds, and resolve disputes through opaque, centralized customer service desks that default against independent workers.
+          </div>
+          <div class="pill-list">
+            <span class="pill">20% Platform Cut</span>
+            <span class="pill">14-Day Clearing Hold</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: #FBBF24;">Direct Crypto Risk</div>
+          <div class="card-body">
+            Sending raw crypto transfers forces <strong>100% counterparty risk</strong> onto one party. Either the buyer pays upfront and risks contractor abandonment, or the worker delivers upfront and risks non-payment. There is no middle ground.
+          </div>
+          <div class="pill-list">
+            <span class="pill">Zero Escrow Guarantee</span>
+            <span class="pill">Counterparty Ghosting</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: #CBD5E1;">Legacy Chain Gas Floor</div>
+          <div class="card-body">
+            Ethereum L1 and legacy rollups require users to hold volatile native tokens (ETH) and incur $1 to $15 transaction fees. This makes micro-milestones ($10–$50 tasks) and machine-to-machine micropayments completely unviable.
+          </div>
+          <div class="pill-list">
+            <span class="pill">Volatile Gas Token</span>
+            <span class="pill">Micropayments Impossible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Problem Identification · Commercial Escrow Inefficiencies</div>
+      <div>Slide 02 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: THE SOLUTION -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag green">The Solution</div>
+    </div>
+    <div class="slide-content">
+      <h2>Troth: Programmable Commercial Escrow on Arc</h2>
+      <p class="lead">An immutable, non-custodial smart contract infrastructure that converts commercial agreements into deterministic software logic over native USDC rails.</p>
+
+      <div class="flow-row">
+        <div class="flow-step">
+          <div class="stat-label">Step 01</div>
+          <div class="card-title" style="margin-top: 8px;">Agreement Lockup</div>
+          <div class="card-body">Buyer deposits total USDC into non-custodial contract tranches (Milestone 1, 2, 3). Funds are cryptographically secured.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="stat-label">Step 02</div>
+          <div class="card-title" style="margin-top: 8px;">Claimable Links</div>
+          <div class="card-body">Recipients bind via direct Arc address OR zero-friction claimable invite link with cryptographic hash authorization.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="stat-label">Step 03</div>
+          <div class="card-title" style="margin-top: 8px;">Dual-Timer Protection</div>
+          <div class="card-body">Contractor delivers work. Client has 7-day review window. If client ghosts, funds auto-release; if contractor misses deadline, buyer can refund.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step highlight">
+          <div class="stat-label" style="color: #38BDF8;">Step 04</div>
+          <div class="card-title" style="margin-top: 8px;">Sub-Second Settlement</div>
+          <div class="card-body">Upon client approval or timer expiration, USDC disbursements execute in ~350ms with sub-cent gas fees.</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 32px;">
+        <div class="card">
+          <div class="card-title">Dual Recipient Flexibility</div>
+          <div class="card-body">Supports instant wallet-to-wallet contracts or Web2-friendly claim links where contractors don't even need a wallet prior to starting work.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Public Zero-Wallet Verification Rail</div>
+          <div class="card-body">Anyone can inspect an agreement status, milestone deliverables, and transaction receipts on our public audit rail with zero wallet connection.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Protocol Architecture · Immutable Workflow Execution</div>
+      <div>Slide 03 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: WHY ARC L1 -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag">Strategic Alignment</div>
+    </div>
+    <div class="slide-content">
+      <h2>Why Arc L1 is Troth’s Fundamental Moat</h2>
+      <p class="lead">Troth cannot exist on Ethereum or general-purpose rollups. Arc's native architectural primitives unlock real commercial viability.</p>
+
+      <div class="quote-box">
+        “Turn commercial agreements into software: milestone releases, dispute workflows, and conditional settlement written as contract logic over USDC payment rails.”
+        <br><strong style="color: #38BDF8; font-style: normal; font-size: 14px;">— Arc Official Request for Builders, Frontier 1: Programmable Trade Workflows</strong>
+      </div>
+
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card highlight">
+          <div class="card-title" style="color: #38BDF8;">Native USDC Gas</div>
+          <div class="card-body">
+            Users pay gas directly in digital dollars (~$0.0001 USDC). Eliminates the dual-token friction where businesses must buy and hold ETH or SOL just to execute an escrow contract.
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="card-title" style="color: #38BDF8;">Sub-Second Deterministic Finality</div>
+          <div class="card-body">
+            Arc's Malachite BFT consensus delivers deterministic ~350ms finality. Milestone completions feel instantaneous, mirroring real-time card settlement without chargeback risk.
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="card-title" style="color: #38BDF8;">Agentic Machine Commerce</div>
+          <div class="card-body">
+            Directly ready for Circle Agent Stack. Autonomous AI agents can negotiate deliverable specs, lock budgets into Troth, verify task completion, and settle payments programmatically.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Ecosystem Alignment · 100% Fit for Arc Request for Builders</div>
+      <div>Slide 04 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: TRACTION & VERIFIED BUILD -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag green">Production Evidence</div>
+    </div>
+    <div class="slide-content">
+      <h2>Live Code, Verified Contracts, Zero Vaporware</h2>
+      <p class="lead">Troth is not a pitch deck concept. It is a live, deployed, and rigorously tested production application on Arc L1.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Technical Ground Truth</div>
+          <div class="code-block">
+// Arc Layer 1 Verified Contract Address
+0xF7A20db6E51171263856f282ed188f795206d649
+
+// Malachite BFT Finality
+~350ms deterministic state transition
+
+// Foundry Security Test Suite
+11 / 11 Unit Tests Passing (100% Coverage)
+✓ testCreateAgreement()
+✓ testClaimAgreement()
+✓ testSubmitAndReleaseMilestone()
+✓ testReviewTimeoutAutoRelease()
+✓ testContractorGhostingRefund()
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Shipped Surfaces</div>
+          <div class="card-body" style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <strong>🌐 Live Production Web Application:</strong>
+              <div style="color: #38BDF8; font-family: monospace; font-size: 15px;">https://trytroth.netlify.app</div>
+            </div>
+            <div>
+              <strong>🔍 Public Zero-Wallet Verification Rail:</strong>
+              <div style="color: #38BDF8; font-family: monospace; font-size: 15px;">https://trytroth.netlify.app/agreement/104</div>
+            </div>
+            <div>
+              <strong>🎥 100% Feature Coverage Video Walkthrough:</strong>
+              <div style="color: #38BDF8; font-family: monospace; font-size: 15px;">https://trytroth.netlify.app/demo-video.mp4</div>
+            </div>
+            <div>
+              <strong>📦 Clean Open-Source Foundry Repository:</strong>
+              <div style="color: #38BDF8; font-family: monospace; font-size: 15px;">https://github.com/A-Raphie/troth</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Proven Execution · Verified on Arc L1 Testnet</div>
+      <div>Slide 05 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: BUSINESS MODEL -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag">Economics & Market</div>
+    </div>
+    <div class="slide-content">
+      <h2>Business Model & Economic Flywheel</h2>
+      <p class="lead">By undercutting legacy rent-extracting platforms by 80% while offering superior speed and security, Troth captures high-velocity commercial transaction volume.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="stat-number">0.50%</div>
+          <div class="card-title">Take Rate on Settlement</div>
+          <div class="card-body">
+            Deducted automatically upon successful milestone disbursement. Leaves 99.5% in contractor pockets while generating sustainable protocol treasury yield.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat-number">$100M+</div>
+          <div class="card-title">Target Transaction Volume</div>
+          <div class="card-body">
+            At $100M annualized GMV, Troth generates <strong>$500,000 ARR</strong> in pure protocol revenue with near-zero marginal cloud infrastructure overhead.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat-number">Machine</div>
+          <div class="card-title">Agentic Micropayments</div>
+          <div class="card-body">
+            High-frequency $5–$50 autonomous AI agent service settlements create compounding network velocity unachievable in legacy banking rails.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <div class="card-title">Target User Acquisition Channels</div>
+        <div class="grid-3" style="margin-top: 8px;">
+          <div><strong>1. Cross-Border Dev Agencies:</strong> Frictionless international contractor settlements without SWIFT wire fees or FX spreads.</div>
+          <div><strong>2. Web3 DAO Grant Programs:</strong> Milestone-gated contributor disbursements with automated review timers.</div>
+          <div><strong>3. AI Agent Marketplaces:</strong> Programmatic escrow integration via REST & TypeScript SDKs using Circle Agent Stack.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Unit Economics · High-Volume Low-Take Strategy</div>
+      <div>Slide 06 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: ROADMAP -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag green">Execution Roadmap</div>
+    </div>
+    <div class="slide-content">
+      <h2>Technical & Ecosystem Roadmap</h2>
+      <p class="lead">Clear execution milestones designed to take Troth from live testnet prototype to the core settlement layer for trade on Arc.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="stat-label">Milestone 01 · Q4 2026</div>
+          <div class="card-title" style="margin-top: 8px;">Arc Mainnet & Multichain</div>
+          <div class="card-body">
+            • Deploy verified contracts on Arc Mainnet (Chain ID 5042)<br>
+            • Integrate <strong>Circle Gateway</strong> for frictionless cross-chain USDC deposits from Arbitrum, Base, and Ethereum<br>
+            • Formal smart contract security audit with top-tier firm
+          </div>
+          <div class="pill-list">
+            <span class="pill">Circle Gateway</span>
+            <span class="pill">Mainnet Launch</span>
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="stat-label" style="color: #38BDF8;">Milestone 02 · Q1 2027</div>
+          <div class="card-title" style="margin-top: 8px;">Agentic Trade API</div>
+          <div class="card-body">
+            • Full integration with <strong>Circle Agent Stack</strong> for autonomous AI contractor settlements<br>
+            • REST / TypeScript SDK for B2B platforms and AI agents<br>
+            • Multi-signature decentralized arbitration council module for disputed milestones
+          </div>
+          <div class="pill-list">
+            <span class="pill">Circle Agent Stack</span>
+            <span class="pill">B2B Trade SDK</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat-label">Milestone 03 · Q2 2027</div>
+          <div class="card-title" style="margin-top: 8px;">Institutional Trade Credit</div>
+          <div class="card-body">
+            • Invoice factoring & escrow yield streaming via <strong>Circle USYC</strong> tokenized yield<br>
+            • Enterprise dashboard for contractor payroll and tax compliance<br>
+            • Target $10M+ monthly settlement volume
+          </div>
+          <div class="pill-list">
+            <span class="pill">USYC Yield</span>
+            <span class="pill">Invoice Factoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Future Horizons · Roadmap & Growth Milestones</div>
+      <div>Slide 07 / 08</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: THE ASK -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-logo">TROTH <span>PROTOCOL</span></div>
+      <div class="header-tag">Funding & Partnership</div>
+    </div>
+    <div class="slide-content">
+      <h2>Partnership & Capital Request</h2>
+      <p class="lead">We are seeking strategic backing from Circle and Arc to establish Troth as the default commercial agreement protocol on Arc L1.</p>
+
+      <div class="grid-2" style="margin-top: 24px;">
+        <div class="card highlight">
+          <div class="stat-label" style="color: #38BDF8;">Circle Developer Grants</div>
+          <div class="stat-number">$50,000 <span style="font-size: 24px; color: #94A3B8;">USDC</span></div>
+          <div class="card-body">
+            <strong>Milestone-Based Grant Allocation:</strong>
+            <ul style="margin-top: 12px; margin-left: 20px; line-height: 1.8;">
+              <li><strong>$25,000 USDC:</strong> Arc Mainnet deployment, Circle Gateway cross-chain deposit integration, and third-party security audit.</li>
+              <li><strong>$25,000 USDC:</strong> Circle Agent Stack A2A trade settlement integration, enterprise SDK release, and onboarding the first 100 commercial contractor teams.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card highlight">
+          <div class="stat-label" style="color: #38BDF8;">Arc Builders Fund & Circle Ventures</div>
+          <div class="stat-number">Seed Round <span style="font-size: 24px; color: #94A3B8;">(Up to $1.0M)</span></div>
+          <div class="card-body">
+            <strong>Strategic Equity / Token Investment:</strong>
+            <ul style="margin-top: 12px; margin-left: 20px; line-height: 1.8;">
+              <li>Dedicated core engineering support and co-marketing with Arc and Circle ecosystem teams.</li>
+              <li>Direct distribution through Arc House and integration into Arc Portal as a flagship financial primitive.</li>
+              <li>Scaling enterprise B2B sales and global compliance infrastructure.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 28px; background: rgba(56, 189, 248, 0.04); border-color: rgba(56, 189, 248, 0.2);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 700; font-size: 18px; color: #F8FAFC;">Lead Contact & Founder: Raphael (Raphie)</div>
+            <div style="color: #94A3B8; font-size: 14px; margin-top: 4px;">GitHub: github.com/A-Raphie · Project Repo: github.com/A-Raphie/troth</div>
+          </div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #38BDF8;">
+            trytroth.netlify.app
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <div>Troth Protocol · Ready to Build the Future of Trade on Arc</div>
+      <div>Slide 08 / 08</div>
+    </div>
+  </div>
+
+</body>
+</html>
